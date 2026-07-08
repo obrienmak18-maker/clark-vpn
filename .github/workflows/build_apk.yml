@@ -14,11 +14,13 @@ jobs:
           java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0'
           channel: 'stable'
-      - run: flutter pub get
-      - run: flutter build apk --release
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: |
+          flutter build apk --release --debug # --debug aide parfois à voir plus de logs en cas d'échec
       - uses: actions/upload-artifact@v4
         with:
           name: clark-vpn-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
