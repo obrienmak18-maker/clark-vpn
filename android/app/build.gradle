@@ -1,13 +1,16 @@
 plugins { id "com.android.application"; id "kotlin-android"; id "dev.flutter.flutter-gradle-plugin" }
 android {
     namespace "com.example.clark_vpn"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         applicationId "com.example.clark_vpn"
-        minSdkVersion 21
-        targetSdkVersion 34
+        minSdkVersion 24 // Requis pour les standards de sécurité 2026
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0.0"
     }
     buildTypes { release { signingConfig signingConfigs.debug } }
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.24"
 }
