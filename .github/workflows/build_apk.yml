@@ -18,8 +18,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build APK
-        run: |
-          flutter build apk --release --debug # --debug aide parfois à voir plus de logs en cas d'échec
+        run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
           name: clark-vpn-apk
