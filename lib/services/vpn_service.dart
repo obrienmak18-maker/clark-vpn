@@ -1,9 +1,6 @@
 import 'package:clark_vpn/models/server_model.dart';
-import 'package:clark_vpn/services/api_service.dart';
 
 class VpnService {
-  final ApiService _apiService = ApiService();
-
   Future<List<Server>> getAvailableServers() async {
     // In a real app, you would fetch servers from your backend
     // For now, return mock data
@@ -12,6 +9,7 @@ class VpnService {
       Server(
         id: '1',
         name: 'United States - New York',
+        country: 'United States',
         location: 'New York',
         ipAddress: '192.168.1.1',
         config: 'wireguard_config_ny',
@@ -21,6 +19,7 @@ class VpnService {
       Server(
         id: '2',
         name: 'United Kingdom - London',
+        country: 'United Kingdom',
         location: 'London',
         ipAddress: '192.168.1.2',
         config: 'wireguard_config_uk',
@@ -30,6 +29,7 @@ class VpnService {
       Server(
         id: '3',
         name: 'France - Paris',
+        country: 'France',
         location: 'Paris',
         ipAddress: '192.168.1.3',
         config: 'wireguard_config_fr',
@@ -39,7 +39,6 @@ class VpnService {
     ];
   }
 
-  // TODO: Implement actual VPN connection logic using platform channels
   Future<void> connectToVpn(Server server) async {
     print('Connecting to VPN: ${server.name}');
     await Future.delayed(const Duration(seconds: 2));

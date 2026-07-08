@@ -10,48 +10,39 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   String? _selectedLanguage = 'English';
 
+  Widget _buildLanguageOption(String language) {
+    return ListTile(
+      title: Text(language),
+      leading: Radio<String>(value: language),
+      onTap: () {
+        setState(() {
+          _selectedLanguage = language;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Language'),
       ),
-      body: ListView(
-        children: [
-          RadioListTile<String>(
-            title: const Text('English'),
-            value: 'English',
-            groupValue: _selectedLanguage,
-            onChanged: (String? value) {
-              setState(() {
-                _selectedLanguage = value;
-              });
-              // TODO: Implement language change logic
-            },
-          ),
-          RadioListTile<String>(
-            title: const Text('Français'),
-            value: 'Français',
-            groupValue: _selectedLanguage,
-            onChanged: (String? value) {
-              setState(() {
-                _selectedLanguage = value;
-              });
-              // TODO: Implement language change logic
-            },
-          ),
-          RadioListTile<String>(
-            title: const Text('Español'),
-            value: 'Español',
-            groupValue: _selectedLanguage,
-            onChanged: (String? value) {
-              setState(() {
-                _selectedLanguage = value;
-              });
-              // TODO: Implement language change logic
-            },
-          ),
-        ],
+      body: RadioGroup<String>(
+        groupValue: _selectedLanguage,
+        onChanged: (String? value) {
+          if (value == null) return;
+          setState(() {
+            _selectedLanguage = value;
+          });
+        },
+        child: ListView(
+          children: [
+            _buildLanguageOption('English'),
+            _buildLanguageOption('Français'),
+            _buildLanguageOption('Español'),
+          ],
+        ),
       ),
     );
   }

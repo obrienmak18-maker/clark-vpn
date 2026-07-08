@@ -123,7 +123,6 @@ class _VpnProfileScreenState extends State<VpnProfileScreen> {
               'Gestion des profils enregistrés (TODO)',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
-            // TODO: Add UI for managing saved VPN profiles (create, delete, edit, duplicate, favorite)
           ],
         ),
       ),

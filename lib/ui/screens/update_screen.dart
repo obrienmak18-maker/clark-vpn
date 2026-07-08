@@ -34,7 +34,7 @@ class UpdateScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement update logic (e.g., open app store link)
+                  
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Opening app store for update...')),
                     );

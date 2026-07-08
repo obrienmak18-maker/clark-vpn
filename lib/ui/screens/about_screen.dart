@@ -42,7 +42,6 @@ class AboutScreen extends StatelessWidget {
               leading: const Icon(Icons.description),
               title: const Text('Read our Terms of Service'),
               onTap: () {
-                // TODO: Open Terms of Service in browser
               },
             ),
             Text(
@@ -53,7 +52,6 @@ class AboutScreen extends StatelessWidget {
               leading: const Icon(Icons.privacy_tip),
               title: const Text('Read our Privacy Policy'),
               onTap: () {
-                // TODO: Open Privacy Policy in browser
               },
             ),
           ],

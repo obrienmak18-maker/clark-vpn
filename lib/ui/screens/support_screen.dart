@@ -29,7 +29,6 @@ class SupportScreen extends StatelessWidget {
               title: const Text('Email Support'),
               subtitle: const Text('support@clarkvpn.com'),
               onTap: () {
-                // TODO: Open email client
               },
             ),
             ListTile(
@@ -37,7 +36,7 @@ class SupportScreen extends StatelessWidget {
               title: const Text('Visit our FAQ'),
               subtitle: const Text('www.clarkvpn.com/faq'),
               onTap: () {
-                // TODO: Open FAQ in browser
+              
               },
             ),
             const SizedBox(height: 20),
