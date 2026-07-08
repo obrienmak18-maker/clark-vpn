@@ -5,12 +5,10 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       groups:
-        - google_play_credentials # Optional: for publishing to Play Store
+        - google_play_credentials
       vars:
-        PACKAGE_NAME: "com.example.clark_vpn" # Replace with your actual package name
+        PACKAGE_NAME: "com.example.clark_vpn"
       flutter: stable
-      xcode: latest
-      cocoapods: default
     scripts:
       - name: Set up local.properties
         script: |
@@ -26,7 +24,44 @@ workflows:
     publishing:
       email:
         recipients:
-          - your-email@example.com # Replace with your email
+          - your-email@example.com
+        notify:
+          success: true
+          failure: true
+
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - apple_credentials # Required for code signing
+      vars:
+        APP_ID: "com.example.clark_vpn" # Replace with your actual Bundle ID
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios && pod install
+      - name: Flutter build iOS
+        script: |
+          flutter build ios --release --no-codesign
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace ios/Runner.xcworkspace \
+            --scheme Runner
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
         notify:
           success: true
           failure: true
