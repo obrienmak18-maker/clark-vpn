@@ -1,5 +1,5 @@
-import 'package:clark_vpn/models/user_model.dart';
-import 'package:clark_vpn/services/api_service.dart';
+import 'package:clarkvpn/models/user_model.dart';
+import 'package:clarkvpn/services/api_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {

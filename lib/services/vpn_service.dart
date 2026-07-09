@@ -1,4 +1,4 @@
-import 'package:clark_vpn/models/server_model.dart';
+import 'package:clarkvpn/models/server_model.dart';
 
 class VpnService {
   Future<List<Server>> getAvailableServers() async {
