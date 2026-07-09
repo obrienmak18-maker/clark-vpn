@@ -1,0 +1,35 @@
+name: Android APK Build with .clark support
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build_android:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'gradle'
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+    - name: Get dependencies
+      run: flutter pub get
+    - name: Accept Android Licenses
+      run: yes | sdkmanager --licenses || true
+    - name: Build APK
+      run: flutter build apk --release --android-skip-build-dependency-validation --no-tree-shake-icons
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: clark-vpn-apk
+        path: build/app/outputs/flutter-apk/*.apk
