@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="clark_vpn"
-        android:name="\${applicationName}"
         android:icon="@android:drawable/sym_def_app_icon">
         <activity
             android:name=".MainActivity"
